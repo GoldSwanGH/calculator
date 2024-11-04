@@ -3,8 +3,8 @@ FROM maven:3.8.1-openjdk-17 AS build
 WORKDIR /app
 
 # Копируем файлы проекта и выполняем сборку
-COPY calculator/pom.xml .
-COPY calculator/src ./src
+COPY pom.xml .
+COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Этап 2: Создание минимального образа с готовым приложением

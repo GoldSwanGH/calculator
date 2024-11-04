@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   app:
     build:
       context: .
-      dockerfile: calculator/Dockerfile  # Указываем путь к Dockerfile в папке calculator
+      dockerfile: Dockerfile  # Указываем путь к Dockerfile в папке calculator
     ports:
-      - "8080:8080"  # Проброс порта контейнера на хост
+      - "4000:8080"  # Проброс порта контейнера на хост
     environment:
       - JAVA_OPTS=-Xmx512m  # Параметры Java (опционально)
