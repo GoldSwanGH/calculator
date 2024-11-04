@@ -47,6 +47,15 @@ pipeline {
                 }
             }
         }
+
+        stage('Docker Deploy') {
+                    steps {
+                        script {
+                            bat 'docker-compose down || exit 0'
+                            bat 'docker-compose up -d --build'
+                        }
+                    }
+                }
     }
 
     post {
