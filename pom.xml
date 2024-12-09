@@ -51,6 +51,10 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -89,6 +93,38 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.17.2</version>
+				<executions>
+					<execution>
+						<id>mutation-testing</id>
+						<phase>test</phase>
+						<goals>
+							<goal>mutationCoverage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<targetClasses>
+						<param>goldswan.calculator.service.*</param>
+					</targetClasses>
+					<targetTests>
+						<param>goldswan.calculator.service.*</param>
+					</targetTests>
+					<outputFormats>
+						<param>HTML</param>
+					</outputFormats>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.pitest</groupId>
+						<artifactId>pitest-junit5-plugin</artifactId>
+						<version>1.2.1</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
